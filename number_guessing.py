@@ -2,7 +2,7 @@
 
 # TODO - declare global variables
 import random
-logo = """
+LOGO = """
                                                   #                                         #                   
   :###:                                      #    #                                         #                   
  .#: .#                                      #    #                                         #                   
@@ -16,12 +16,12 @@ logo = """
 """
 life = 0
 thought = 0
-correct_answer = False
+correct_asnwer = False
 
 def init():
-    global logo, life, thought
+    global LOGO, life, thought
     # TODO - Create user welcome & explain rules
-    print(f"Welcome to\n{logo}\nI have thought of a number between 1 and 100. You need to guess it under - for easy option 10, for hard option 5 - guesses. ")
+    print(f"Welcome to\n{LOGO}\nI have thought of a number between 1 and 100. You need to guess it under - for easy option 10, for hard option 5 - guesses. ")
     difficulty = input("Please choose difficulty. Type 'easy' or 'hard': ")
     if difficulty.lower() == "easy":
         life = 10
@@ -34,8 +34,8 @@ def init():
     thought = random.choice(range(1,101))
 
 def guessing():
-    global life, thought, correct_answer
-    while not correct_answer and (life > 0):
+    global life, thought, correct_asnwer
+    while not correct_asnwer and (life > 0):
         # TODO - Check the guess against the number
         print(f"You have {life} attempts remaining to guess.")
         guess = int(input("Make a guess: "))
@@ -50,10 +50,11 @@ def guessing():
             print(f"Too low.\nGuess again.")
 
         else:
-            correct_answer = True
+            correct_asnwer = True
             print(f"You got it! The answer was {guess}.")
 
 def main():
+    global life
     init()
     guessing()
     if life < 1:
